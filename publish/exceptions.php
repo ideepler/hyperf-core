@@ -13,8 +13,8 @@ return [
     'handler' => [
         'http' => [
             Hyperf\HttpServer\Exception\Handler\HttpExceptionHandler::class,
-            Ideepler\HyperfTools\Exception\Handler\ValidationExceptionHandler::class,
-            Ideepler\HyperfTools\Exception\Handler\AppExceptionHandler::class,
+            Ideepler\HyperfCore\Exception\Handler\ValidationExceptionHandler::class,
+            Ideepler\HyperfCore\Exception\Handler\AppExceptionHandler::class,
         ],
     ],
 ];
