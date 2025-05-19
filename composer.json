@@ -1,0 +1,36 @@
+{
+    "name": "ideepler/hyperf-core",
+    "type": "library",
+    "license": "MIT",
+    "keywords": [
+        "php",
+        "hyperf"
+    ],
+    "description": "hyperf-core",
+    "autoload": {
+        "psr-4": {
+            "Ideepler\\HyperfCore\\": "src/"
+        },
+        "files": [
+            "src/Utils/CommonFunction.php"
+        ]
+    },
+    "require": {
+        "php": ">=8.0"
+    },
+    "suggest": {
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true,
+    "config": {
+        "optimize-autoloader": true,
+        "sort-packages": true
+    },
+    "scripts": {
+    },
+    "extra": {
+        "hyperf": {
+            "config": "Ideepler\\HyperfCore\\ConfigProvider"
+        }
+    }
+}
