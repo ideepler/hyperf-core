@@ -32,9 +32,15 @@ class ConfigProvider
 	        'publish' => [
                 [
                     'id' => 'config-logger',
-                    'description' => 'logger config.', // 描述
+                    'description' => 'logger config.', // 日志配置文件
                     'source' => __DIR__ . '/../publish/logger.php',  // 对应的配置文件路径
                     'destination' => BASE_PATH . '/config/routes/logger.php', // 复制为这个路径下的文件名
+                ],
+                [
+                    'id' => 'config-exceptions',
+                    'description' => 'exceptions config.', // 异常配置文件
+                    'source' => __DIR__ . '/../publish/exceptions.php',  // 对应的配置文件路径
+                    'destination' => BASE_PATH . '/config/routes/exceptions.php', // 复制为这个路径下的文件名
                 ]
 	        ],
         ];
