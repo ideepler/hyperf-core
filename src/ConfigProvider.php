@@ -11,6 +11,10 @@ declare(strict_types=1);
  */
 namespace Ideepler\HyperfCore;
 
+use Ideepler\HyperfCore\NacosServiceGovernance\InstanceOffline;
+use Ideepler\HyperfCore\NacosServiceGovernance\InstanceUnregister;
+use Ideepler\HyperfCore\NacosServiceGovernance\OnShutdownUnregisterListener;
+
 use function Hyperf\Support\env;
 
 class ConfigProvider
@@ -20,14 +24,19 @@ class ConfigProvider
         return [
             'dependencies' => [
             ],
-            'commands' => [
-            ],
             'annotations' => [
                 'scan' => [
                     'paths' => [
                         __DIR__,
                     ],
                 ],
+            ],
+            'commands' => [
+                InstanceUnregister::class,
+                InstanceOffline::class,
+            ],
+            'listeners' => [
+                OnShutdownUnregisterListener::class,
             ],
 	        'publish' => [
                 [
