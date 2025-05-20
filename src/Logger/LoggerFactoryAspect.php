@@ -36,8 +36,6 @@ class LoggerFactoryAspect extends AbstractAspect
         $name = $args[0];
         $group = $args[1];
 
-        print_r($args);
-
         $config = $this->config->get('logger');
         if (! isset($config[$group])) {
             throw new InvalidConfigException(sprintf('Logger config[%s] is not defined.', $group));
