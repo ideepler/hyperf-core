@@ -9,7 +9,7 @@ namespace Ideepler\HyperfCore\NacosConfig;
 
 use Hyperf\Collection\Arr;
 
-class NacosDriver extends Hyperf\ConfigNacos\NacosDriver
+class NacosDriver extends \Hyperf\ConfigNacos\NacosDriver
 {
     protected function updateConfig(array $config): void
     {
