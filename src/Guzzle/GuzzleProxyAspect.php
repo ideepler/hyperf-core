@@ -32,10 +32,10 @@ class GuzzleProxyAspect extends AbstractAspect
 
         // 判断需要追加代理的场景
         if(isset($arguments[0]['proxy']) && $arguments[0]['proxy'] === true){
-            $socks5Proxy = config('business.socks5proxy');
+            $socks5Proxy = config('proxy.socks5proxy');
 
             if(empty($socks5Proxy)){
-                throw new InvalidConfigException(sprintf('business config[%s] is not defined.', 'socks5proxy'));
+                throw new InvalidConfigException(sprintf('proxy config[%s] is not defined.', 'socks5proxy'));
             }
 
             $arguments[0]['proxy'] = [
