@@ -29,8 +29,8 @@ class JsonRpcTcpServerAspect extends AbstractAspect
         $data = $proceedingJoinPoint->arguments['keys']['data'] ?? [];
 
         // 追加附加逻辑
-        $traceId = $data['context']['traceId'];
-        $parentSpanId = $data['context']['parentSpanId'];
+        $traceId = $data['context']['traceId'] ?? '';
+        $parentSpanId = $data['context']['parentSpanId'] ?? '';
 
         // 将附加参数写入 Context
         if(!Context::has('traceId')){

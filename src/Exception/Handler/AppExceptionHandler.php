@@ -19,6 +19,7 @@ use Psr\Http\Message\ResponseInterface;
 use Throwable;
 use Ideepler\HyperfCore\Exception\BusinessException;
 use Ideepler\HyperfCore\Exception\InvalidArgumentException;
+use Hyperf\RpcClient\Exception\RequestException as RpcRequestException;
 
 class AppExceptionHandler extends ExceptionHandler
 {
@@ -38,8 +39,14 @@ class AppExceptionHandler extends ExceptionHandler
 			// 阻止异常冒泡
 			$this->stopPropagation();
 
+            // 对Rpc异常code进行重新赋值
+            $errCode = $throwable->getCode();
+            if ($throwable instanceof RpcRequestException){
+                $errCode = $throwable->getThrowableCode();
+            }
+
 			$msgData = [
-				'errno' => $throwable->getCode(),
+				'errno' => $errCode,
 				'msg' => $throwable->getMessage(),
 				'data' => [],
 				'time' => time()
@@ -81,6 +88,8 @@ class AppExceptionHandler extends ExceptionHandler
 			$this->logger->info(sprintf('%s[%s] in %s', $throwable->getMessage(), $throwable->getLine(), $throwable->getFile()));
 		}elseif ($throwable instanceof BusinessException){
 			$this->logger->warning(sprintf('%s[%s] in %s', $throwable->getMessage(), $throwable->getLine(), $throwable->getFile()));
+        }elseif($throwable instanceof RpcRequestException){
+            $this->logger->info(sprintf('%s[%s] in %s', $throwable->getMessage(), $throwable->getLine(), $throwable->getFile()));
 		}else{
 			$this->logger->error(sprintf('%s[%s] in %s', $throwable->getMessage(), $throwable->getLine(), $throwable->getFile()));
 			$this->logger->error($throwable->getTraceAsString());
@@ -99,7 +108,9 @@ class AppExceptionHandler extends ExceptionHandler
 			return true;
 		}elseif ($throwable instanceof BusinessException){
 			return true;
-		}
+		}elseif($throwable instanceof RpcRequestException){
+            return true;
+        }
 
 		// 错误编码为约定异常则直接输出
 		if(strlen((string)$throwable->getCode()) === 5){
