@@ -8,7 +8,7 @@ namespace Ideepler\HyperfCore\Utils;
  * 货币操作相关函数.
  * 获取单位精度(元)(角)(分)(厘)(毫)(丝)
  */
-class MoneyUtil
+class MoneyFunction
 {
     // 精度设置为厘
 	private static int $minPrecision = 1000;

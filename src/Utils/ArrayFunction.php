@@ -7,7 +7,7 @@ namespace Ideepler\HyperfCore\Utils;
 /**
  * 数组相关的常用处理函数.
  */
-class ArrayUtil
+class ArrayFunction
 {
 	/**
 	 * 获取数组中指定keys.
