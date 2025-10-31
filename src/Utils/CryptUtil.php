@@ -13,7 +13,7 @@ class CryptUtil
      * @param string $key 秘钥
      * @return string chars 加密后的字符串
      */
-    public function encrypt(string $originStr, string $key): string
+    public static function encrypt(string $originStr, string $key): string
     {
         $iv = openssl_random_pseudo_bytes(16);
         $encrypted = openssl_encrypt($originStr, 'aes-256-cbc', $key, OPENSSL_RAW_DATA, $iv);
@@ -26,7 +26,7 @@ class CryptUtil
      * @param string $key 秘钥
      * @return string chars 加密后的字符串
      */
-    public function decrypt(string $encryptStr, string $key): string
+    public static function decrypt(string $encryptStr, string $key): string
     {
         $decodedStr = base64_decode($encryptStr);
         $iv = substr($decodedStr, 0, 16);
