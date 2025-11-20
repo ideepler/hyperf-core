@@ -10,8 +10,8 @@ namespace Ideepler\HyperfCore\Utils;
  */
 class MoneyFunction
 {
-    // 精度设置为厘
-	private static int $minPrecision = 1000;
+    // 精度设置为分
+	private static int $minPrecision = 100;
 
 	/**
 	 * 将金额转换为固定小数位的字符串
