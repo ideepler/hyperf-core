@@ -64,7 +64,7 @@ class MoneyFunction
 			if(!is_numeric($data[$field])){
 				continue;
 			}
-			$data[$field] = self::amountDecimalToInteger($data[$field]);
+			$data[$field] = self::amountDecimalToInteger((float)$data[$field]);
 		}
 		return $data;
 	}
@@ -85,7 +85,7 @@ class MoneyFunction
 			if(!is_numeric($data[$field])){
 				continue;
 			}
-			$data[$field] = self::amountIntegerToDecimal($data[$field]);
+			$data[$field] = self::amountIntegerToDecimal((int)$data[$field]);
 		}
 		return $data;
 	}
